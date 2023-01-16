@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-4 mt-4">
+            <div class="card h-60 my-4">
+              <form [formGroup]="form" class="card-body p-lg-5">
+                <div class="form-group mb-4">
+                  <label class="form-label">Enter First Value:</label>
+                  <input
+                    type="text"
+                    name="firstValue"
+                    class="form-control"
+                    formControlName="firstValue"
+                  />
+                  <div
+                    *ngIf="f['firstValue'].touched && f['firstValue'].invalid"
+                    class="alert alert-danger"
+                  >
+                    <div
+                      *ngIf="
+                        f['firstValue'].errors && f['firstValue'].errors['required']
+                      "
+                    >
+                      Please enter firstValue
+                    </div>
+                    <div
+                      *ngIf="
+                        f['firstValue'].errors && f['firstValue'].errors['pattern']
+                      "
+                    >
+                      Please enter number only
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mb-2">
+                  <label class="form-label">Enter Second Value:</label>
+                  <input
+                    type="text"
+                    name="secondValue"
+                    class="form-control"
+                    formControlName="secondValue"
+                  />
+                  <div
+                    *ngIf="f['secondValue'].touched && f['secondValue'].invalid"
+                    class="alert alert-danger"
+                  >
+                    <div
+                      *ngIf="
+                        f['secondValue'].errors && f['secondValue'].errors['required']
+                      "
+                    >
+                      Please enter secondValue
+                    </div>
+                    <div
+                      *ngIf="
+                        f['secondValue'].errors && f['secondValue'].errors['pattern']
+                      "
+                    >
+                      Please enter number only
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mb-2">
+                  <label class="form-label">Choose Option</label>
+                  <select
+                    class="form-select"
+                    (change)="onChange($event)"
+                    formControlName="choose"
+                  >
+                    <option
+                      *ngFor="let data of type"
+                      value="{{ data.name }}"
+                      [disabled]="data.id == 0"
+                    >
+                      {{ data.value }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="f['choose'].touched && f['choose'].invalid"
+                    class="alert alert-danger"
+                  >
+                    <div *ngIf="f['choose'].errors && f['choose'].errors['required']">
+                      Please select option
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button
+                    class="btn px-5 mb-3 w-100"
+                    (click)="onSubmit()"
+                    [disabled]="!this.form.valid"
+                  >
+                    Get Value
+                  </button>
+                </div>
+                <h6 class="text-center">Value of two numbers : {{ total }}</h6>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>

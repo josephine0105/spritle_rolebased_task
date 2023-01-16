@@ -1,0 +1,18 @@
+<table class="table table-responsive mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Method</th>
+      <th scope="col">First Value</th>
+      <th scope="col">Second Value</th>
+      <th scope="col">Answer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let list of answer">
+      <td scope="row" >{{list.choose}}</td>
+      <td>{{list.firstValue}}</td>
+      <td>{{list.secondValue}}</td>
+      <td>{{list.answer}}</td>
+    </tr>
+  </tbody>
+</table>
